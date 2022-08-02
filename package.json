@@ -1,0 +1,33 @@
+{
+  "name": "oneupgaming",
+  "version": "1.0.0",
+  "description": "The OUG Discord Integration",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node ./src/deployCommands.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "github.com/vKxni",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "ascii-table": "^0.0.9",
+    "axios": "^0.25.0",
+    "body-parser": "^1.19.1",
+    "colors": "^1.4.0",
+    "common-tags": "^1.8.2",
+    "discord-api-types": "^0.31.1",
+    "discord.js": "^13.6.0",
+    "dotenv": "^10.0.0",
+    "fs": "^0.0.1-security",
+    "moment": "^2.29.4",
+    "mongoose": "^6.5.0",
+    "ms": "^2.1.3",
+    "nodemon": "^2.0.12",
+    "path": "^0.12.7",
+    "ping": "^0.4.2",
+    "sourcebin_js": "^0.0.3-ignore"
+  }
+}
