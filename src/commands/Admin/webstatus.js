@@ -28,10 +28,12 @@ module.exports.data = new SlashCommandBuilder()
  */
 module.exports.run = async (interaction, utils) => {
     try {
-        for (let host of hosts) {
-            let res = await ping.promise.probe(host);
-            interaction.reply({ content: `OneUpGaming online: **${res.alive}**`, ephemeral: true });
-        }
+        hosts.forEach(function(host){
+            ping.sys.probe(host, function(isAlive){
+                let msg = isAlive ? 'host ' + ' is online' : 'host ' + host + ' is offline';
+                interaction.reply({ content: `OneUpGaming ${msg}`, ephemeral: true });
+        });
+    });
     }
     catch (err) {
         return Promise.reject(err);
