@@ -72,6 +72,16 @@ module.exports.run = async (interaction, args) => {
         missingUserPermissions.push(getKeyByValue(Permissions.FLAGS, flag));
     });
 
+    const args = [];
+    for (let option of interaction.options.data) {
+      if (option.type === "SUB_COMMAND") {
+        if (option.name) args.push(option.name);
+        option.options?.forEach((x) => {
+          if (x.value) args.push(x.value);
+        });
+      } else if (option.value) args.push(option.value);
+    }
+
     /* Only run the command if the user is not missing any permissions. */
     if (missingUserPermissions.length == 0) {
       cmdFile.run(interaction, args).catch((err) => console.error(red(err)));
