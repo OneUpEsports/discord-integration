@@ -21,7 +21,7 @@ module.exports.data = {
  * @param {Client} client The client that triggered the event.
  */
 module.exports.run = async (client) => {
-  // client.user.setPresence({ activities: [{ name: `Status` }], status: "dnd" });
+  client.user.setPresence({ activities: [{ name: `oneupgaming.io` }], status: "dnd" });
 
   // connect to database
   mongoose.connect(process.env.MONGO_TOKEN)

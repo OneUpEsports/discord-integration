@@ -8,6 +8,9 @@ const { red } = require("colors/safe");
 const config = require("../../Controller/config.js");
 const emojis = require("../../Controller/emojis/emojis");
 
+// database
+const Blacklisted = require("../models/UserFlags");
+
 module.exports.data = {
   name: "interactionCreate",
   once: false,
@@ -80,6 +83,15 @@ module.exports.run = async (interaction, args) => {
           if (x.value) args.push(x.value);
         });
       } else if (option.value) args.push(option.value);
+    }
+
+    // blacklist system
+    let profile = await Blacklisted.findOne({ userID: interaction.user.id });
+    if (profile) {
+      return interaction.reply({
+        content: `${emojis.error} | You are blacklisted from using my Commands.`,
+        ephemeral: true,
+      });
     }
 
     /* Only run the command if the user is not missing any permissions. */
